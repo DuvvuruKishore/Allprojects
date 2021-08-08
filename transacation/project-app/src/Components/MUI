@@ -1,0 +1,56 @@
+import {Button, ButtonGroup, Checkbox, createMuiTheme, FormControlLabel, makeStyles, TextField, ThemeProvider} from '@material-ui/core';
+import SaveIcon from '@material-ui/icons/Save';
+import DeleteIcon from '@material-ui/icons/Delete';
+import { green, orange } from '@material-ui/core/colors';
+
+
+const useStyles=makeStyles({
+ root:{
+   background:'linear-gradient(45deg,#FE6888,#FF8E53)',
+   border:0,
+   marginBotton:15,
+   borderRadius:15,
+   color:'white',
+   padding :'5px 30px'
+ }
+})
+
+const theme=createMuiTheme({
+  palette:{
+    primary:{
+    main:green[400],
+    }
+  }
+})
+
+
+function App() {
+
+  const [checked,setChecked]=useState(true);
+  return (
+    <ThemeProvider theme={theme}>
+    <div className="App">
+    <Button className={useStyles().root}>king maker</Button>
+    <TextField
+    variant="filled" color="secondary" type="email" label="theTime" placeholder="test@test.com"/>
+    <Header/>
+    <FormControlLabel
+     control={<Checkbox checked={checked}
+     onClick={(e)=>setChecked(e.target.checked)}/>
+     }
+     label='Testing CheckBox'
+    />
+    <ButtonGroup variant="contained" color="primary">
+        <Button  startIcon={<SaveIcon></SaveIcon>} size="small" variant="contained" color="secondary">SAVE</Button>
+        <Button  startIcon={<DeleteIcon></DeleteIcon>} size="small">delete</Button>
+
+  </ButtonGroup>
+  </div>
+  </ThemeProvider>
+
+
+    
+  );
+}
+
+export default App;
